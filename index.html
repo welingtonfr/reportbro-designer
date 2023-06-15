@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="reportbro.css"/>
+<script src="reportbro.js"></script>
+
+<div id="reportbro"></div>
+<a id="downloadAnchorElem"></a>
+<script type="text/javascript">
+  const rb = new ReportBro(document.getElementById('reportbro'), {
+    adminMode: true,
+    menuShowDebug: true,
+    saveCallback: () => { 
+      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(rb.getReport()));
+      var dlAnchorElem = document.getElementById('downloadAnchorElem');
+      dlAnchorElem.setAttribute("href", dataStr);
+      dlAnchorElem.setAttribute("download", "template.json");
+      dlAnchorElem.click();
+    },
+  });
+</script>
